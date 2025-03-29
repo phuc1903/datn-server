@@ -8,22 +8,19 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        $setting = Setting::all();
-        return view('Pages.Setting.Index', compact('setting'));
+        $settings = Setting::all()->pluck('value', 'name')->map(function ($value) {
+            if (is_string($value) && json_decode($value) !== null) {
+                return json_decode($value, true);
+            }
+            return $value;
+        });
+
+        return view('Pages.Setting.Index', compact('settings'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -31,37 +28,26 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         try {
-            $name = $request->name;
-    
-            $value = $request->value;
-    
-            if (!empty($value) && is_array($value)) {
-                $value = json_encode($value);
-            }
-
-            if($request->hasFile('value') && $request->file('value')->isValid()) {
-
-                $existingImage = Setting::where('name', $name)->first();
-                if ($existingImage && !empty($existingImage->value)) {
-                    deleteImage($existingImage->value)  ; 
+            foreach ($request->except('_token') as $key => $value) {
+                if ($request->hasFile($key)) {
+                    $existingImage = Setting::where('name', $key)->first();
+                    if ($existingImage && !empty($existingImage->value)) {
+                        deleteImage($existingImage->value);
+                    }
+                    $value = putImage('config_images', $request->file($key));
+                } elseif (is_array($value)) {
+                    $value = json_encode($value);
                 }
 
-                $value = putImage('config_images', $request->file('value'));
+                Setting::updateOrCreate(
+                    ['name' => $key],
+                    ['value' => $value]
+                );
             }
-    
-            Setting::updateOrCreate(
-                ['name' => $name],
-                ['value' => $value],
-            );
-            
             return redirect()->back()->with('success', 'Cập nhật thành công');
-        }catch(\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
-    public function footer(){
-        $footer = Setting::where('name', 'footer')->first();
-        return view('Pages.Setting.Footer', compact('footer'));
-    }
 }

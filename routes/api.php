@@ -13,6 +13,8 @@ use App\Http\Controllers\Api\V1\Voucher\VoucherController;
 use App\Http\Controllers\Api\V1\ProductFeedback\ProductFeedbackController;
 use App\Http\Controllers\Api\V1\Address\AddressController;
 use App\Http\Controllers\Api\V1\Combo\ComboController;
+use App\Http\Controllers\Api\V1\Setting\SettingController;
+
 // Version 1
 Route::prefix('v1')->group(function () {
     /*
@@ -32,9 +34,15 @@ Route::prefix('v1')->group(function () {
         Route::get('/', 'getAllProduct');
         Route::get('/detail/{id}', 'getProduct');
         Route::get('/category/{id}', 'getProductByCategory');
+        Route::get('/tag/{id}', 'getProductByTag');
         Route::get('/most-favorites','getMostFavoritedProducts');
         Route::get('/feedback-product/{id}', 'getFeedBackProduct');
+        Route::get('/product-related/{id}', 'getProductRelated');
         Route::get('/skus/{id}', 'getSkus')->name('api.get.skus.product');
+
+        Route::middleware(['auth:sanctum','auth.active'])->group(function () {
+            Route::get('/also-like/', 'getProductAlsoLike');
+        });
     });
     /*
         |--------------------------------------------------------------------------
@@ -72,7 +80,7 @@ Route::prefix('v1')->group(function () {
         |--------------------------------------------------------------------------
         */
     Route::prefix('orders')->controller(OrderController::class)->group(function () {
-        Route::middleware('auth:sanctum')->group(function () {
+        Route::middleware(['auth:sanctum','auth.active'])->group(function () {
             Route::post('/create', 'createOrder');
             Route::get('/{id}', 'orderUserDetail');
         });
@@ -102,6 +110,10 @@ Route::prefix('v1')->group(function () {
         Route::post('/register', 'register');
         Route::post('/forgot-password', 'forgotPassword');
         Route::post('/reset-password', 'resetPassword');
+
+        // Google
+        Route::post('/login/google', 'loginGoogle');
+        Route::get('/google/callback', 'handleGoogleCallback');
 
         Route::middleware(['auth:sanctum', 'auth.active'])->group(function () {
             Route::post('/logout', 'logout');
@@ -196,5 +208,9 @@ Route::prefix('v1')->group(function () {
             // Nhận Voucher
             Route::post('/{id}/claim', 'claimVouchers');
         });
+    });
+
+    Route::prefix('settings')->controller(SettingController::class)->group(function() {
+        Route::get('/', 'getAllSettings');
     });
 });

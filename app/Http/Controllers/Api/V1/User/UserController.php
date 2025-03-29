@@ -27,7 +27,7 @@ class UserController extends Controller
     {
         try {
             // Eager load các mối quan hệ liên quan
-            $users = User::with('addresses', 'carts.sku.product', 'carts.sku.variantValues', 'favorites.product', 'vouchers.productVoucher', 'wallet', 'productFeedbacks.product', 'orders.items.product', 'orders.items.sku', 'orders.items.sku.variantValues')
+            $users = User::with('addresses', 'carts.sku.product', 'carts.sku.variantValues', 'favorites.product', 'wallet', 'productFeedbacks.sku', 'orders.items.sku', 'orders.items.sku', 'orders.items.sku.variantValues')
                 ->get();
 
             return response()->json([
@@ -100,7 +100,7 @@ class UserController extends Controller
     {
         try {
             $user = auth()->user(); // Lấy người dùng đang đăng nhập
-            $orders = $user->orders()
+            $orders = $user->orders()->with('items', 'items.sku', 'items.sku.product')
                 ->orderBy('created_at', 'desc') // Sắp xếp theo thời gian tạo mới nhất
                 ->get();
             if ($orders) {
@@ -129,7 +129,7 @@ class UserController extends Controller
             // Lấy user kèm theo danh sách vouchers
             $vouchers = User::with(['vouchers' => function ($query) {
                 $query->where('status', VoucherStatus::Active);
-            }, 'vouchers.productVoucher'])
+            }])
                 ->find($user->id);
 
             // Trả về danh sách vouchers của user
@@ -139,7 +139,6 @@ class UserController extends Controller
             return ResponseError($e->getMessage(), null, 500);
         }
     }
-
 
     /*
     |--------------------------------------------------------------------------
@@ -171,7 +170,7 @@ class UserController extends Controller
     /*
     |--------------------------------------------------------------------------
     | Lấy danh sách yêu thích sản phẩm User
-    | Path: /api/users/{{userId}}/favorites
+    | Path: /api/users/favorites
     |--------------------------------------------------------------------------
     */
     public function favorites()
@@ -268,7 +267,6 @@ class UserController extends Controller
         }
     }
 
-
     /*
     |--------------------------------------------------------------------------
     | function address
@@ -296,7 +294,6 @@ class UserController extends Controller
             return ResponseError($e->getMessage(),null,500);
         }
     }
-
     public function addAddressUser(AddAddressRequest $request)
     {
         try {

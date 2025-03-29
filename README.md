@@ -1,97 +1,66 @@
-# Phát triển website bán mỹ phẩm làm đẹp ZBeauty
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Được thực hiện bởi team 5 của ZBeauty với Dự án tốt nghiệp
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Authors
+## About Laravel
 
-- [@Đinh Trọng Phúc](https://github.com/phuc1903)
-- [@Trần Hữu Hiệp](https://github.com/HHiepz)
-- [@Phạm Văn Hoàng](https://github.com/MarxVn09)
-- [@Nguyễn Thanh Bình](https://github.com/nguyenthanhbinhps28654)
-- [@Trần Nhất Đông](https://github.com/DongTran00)
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## 🛠 Skills
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Dự án được xây dựng bởi các công nghệ:
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-- **Laravel 10**: A PHP framework for building robust web applications.
-- **NextJS**: A framework that allows you to create modern single-page applications (SPAs) using classic server-side routing and controllers.
-- **TailwindCSS**: A utility-first CSS framework that enables fast styling of user interfaces with a highly customizable design system.
+## Learning Laravel
 
-## Requirements
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- Generated ssh key
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-- PHP min v.8.2
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-- DB server (Recommended:MySQL)
+## Laravel Sponsors
 
-- [composer min v.2](https://getcomposer.org/download/)
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-- [nodejs min v.20](https://nodejs.org/en/download/prebuilt-installer)
+### Premium Partners
 
-## Run Locally
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-Clone the project
+## Contributing
 
-```bash
-git clone git@github.com:phuc1903/datn.git
-```
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Go to the project directory
+## Code of Conduct
 
-```bash
-cd datn
-```
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Run Backend
+## Security Vulnerabilities
 
-Go to the backend's directory
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-```bash
-cd server
-```
+## License
 
-```bash
-composer install
-npm install
-```
-
-Add .env
-
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-Run Migrate
-
-```bash
-php artisan migrate --seed
-```
-
-Run the backend project
-
-```bash
-php artisan serve
-```
-
-```bash
-npm run dev
-```
-
-## Run FrontEnd
-
-Go to the frontend's directory
-
-```bash
-cd client
-```
-
-```bash
-npm install
-```
-
-```bash
-npm run dev
-```
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
