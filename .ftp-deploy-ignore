@@ -1,0 +1,43 @@
+# Git stuff
+.git*
+.github/
+
+# Node & frontend dev dependencies
+node_modules/
+vite.config.js
+webpack.mix.js
+package.json
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Tests & development files
+tests/
+phpunit.xml
+.env
+.env.example
+.env.testing
+
+# CI/CD & deploy config
+deploy.yml
+.ftp-deploy-ignore
+
+# MacOS / system files
+.DS_Store
+Thumbs.db
+
+# IDE & editor configs
+*.log
+*.swp
+*.swo
+*.swn
+.idea/
+.vscode/
+
+# Laravel cache, logs, etc (optional if already handled in deployment)
+storage/debugbar/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/testing/
+storage/framework/views/
+storage/logs/
