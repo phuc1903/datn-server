@@ -31,6 +31,7 @@ Thumbs.db
 *.swp
 *.swo
 *.swn
+*.lock
 .idea/
 .vscode/
 
@@ -41,3 +42,4 @@ storage/framework/sessions/
 storage/framework/testing/
 storage/framework/views/
 storage/logs/
+vendor/
