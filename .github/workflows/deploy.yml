@@ -37,5 +37,6 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: /admin.zbeauty.id.vn/
+        local-dir: ./
         protocol: ftps
         port: 21
