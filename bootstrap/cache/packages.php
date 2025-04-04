@@ -1,4 +1,16 @@
 <?php return array (
+  'barryvdh/laravel-snappy' => 
+  array (
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\Snappy\\Facades\\SnappyPdf',
+      'SnappyImage' => 'Barryvdh\\Snappy\\Facades\\SnappyImage',
+    ),
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\Snappy\\ServiceProvider',
+    ),
+  ),
   'bensampo/laravel-enum' => 
   array (
     'providers' => 
@@ -6,11 +18,15 @@
       0 => 'BenSampo\\Enum\\EnumServiceProvider',
     ),
   ),
-  'laravel/sail' => 
+  'diglactic/laravel-breadcrumbs' => 
   array (
+    'aliases' => 
+    array (
+      'Breadcrumbs' => 'Diglactic\\Breadcrumbs\\Breadcrumbs',
+    ),
     'providers' => 
     array (
-      0 => 'Laravel\\Sail\\SailServiceProvider',
+      0 => 'Diglactic\\Breadcrumbs\\ServiceProvider',
     ),
   ),
   'laravel/sanctum' => 
@@ -38,11 +54,15 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'laravel/ui' => 
+  'maatwebsite/excel' => 
   array (
+    'aliases' => 
+    array (
+      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
+    ),
     'providers' => 
     array (
-      0 => 'Laravel\\Ui\\UiServiceProvider',
+      0 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     ),
   ),
   'nesbot/carbon' => 
@@ -52,29 +72,11 @@
       0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
   ),
-  'nunomaduro/collision' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    ),
-  ),
   'nunomaduro/termwind' => 
   array (
     'providers' => 
     array (
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    ),
-  ),
-  'spatie/laravel-ignition' => 
-  array (
-    'aliases' => 
-    array (
-      'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
-    ),
-    'providers' => 
-    array (
-      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     ),
   ),
   'spatie/laravel-permission' => 
