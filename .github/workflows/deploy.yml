@@ -25,10 +25,11 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install NPM & Build assets
-      run: |
-        npm install
-        npm run build
+    - name: Install NPM Dependencies
+      run: npm install
+
+    - name: Build NPM Assets
+      run: npm run build
 
     - name: Upload to cPanel via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
