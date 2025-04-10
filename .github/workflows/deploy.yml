@@ -37,12 +37,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER_QT }}
           username: ${{ secrets.FTP_USERNAME_QT }}
           password: ${{ secrets.FTP_PASSWORD_QT }}
-          server-dir: /public_html/
-          local-dir: ./public
+          server-dir: ./
           protocol: ftp
           port: 21
-          passive: true
           dangerous-clean-slate: false
           log-level: verbose
           dry-run: false
-          parallel: false
